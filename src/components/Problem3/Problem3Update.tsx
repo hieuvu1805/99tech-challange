@@ -1,4 +1,4 @@
-import sourceUpdate from "./sourceUpdate.tsx?raw";
+import sourceUpdate from "./sourceUpdate.txt?raw";
 import { CodeBlock } from 'react-code-blocks';
 
 export default function Problem3Update() {

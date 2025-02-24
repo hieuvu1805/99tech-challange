@@ -40,19 +40,19 @@ export default function SwapCard() {
   };
 
   const fromDropdownRef = useRef<HTMLDivElement>(null);
+  const fromDropdownBtnRef = useRef<HTMLButtonElement>(null);
   const toDropdownRef = useRef<HTMLDivElement>(null);
+  const toDropdownBtnRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
-      if (
-        fromDropdownRef.current &&
-        !fromDropdownRef.current.contains(event.target as Node)
+      if (!fromDropdownRef.current?.contains(event.target as Node)
+        && !fromDropdownBtnRef.current?.contains(event.target as Node)
       ) {
         setShowFromDropdown(false);
       }
-      if (
-        toDropdownRef.current &&
-        !toDropdownRef.current.contains(event.target as Node)
+      if (!toDropdownRef.current?.contains(event.target as Node)
+        && !toDropdownBtnRef.current?.contains(event.target as Node)
       ) {
         setShowToDropdown(false);
       }
@@ -72,6 +72,7 @@ export default function SwapCard() {
           <button
             className="flex items-center gap-2 bg-gray-700 px-3 py-1 rounded-lg relative cursor-pointer"
             onClick={() => setShowFromDropdown(!showFromDropdown)}
+            ref={fromDropdownBtnRef}
           >
             <img src={cIcon(fromCurrency.currency)} alt={fromCurrency.currency} className="w-6 h-6" />
             <span>{fromCurrency.currency}</span>
@@ -109,6 +110,7 @@ export default function SwapCard() {
           <button
             className="flex cursor-pointer items-center gap-2 bg-gray-700 px-3 py-1 rounded-lg relative"
             onClick={() => setShowToDropdown(!showToDropdown)}
+            ref={toDropdownBtnRef}
           >
             <img src={cIcon(toCurrency.currency)} alt={toCurrency.currency} className="w-6 h-6" />
             <span>{toCurrency.currency}</span>

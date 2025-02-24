@@ -1,5 +1,5 @@
 import { CodeBlock } from 'react-code-blocks';
-import sourceCode from "./source.tsx?raw";
+import sourceCode from "./source.txt?raw";
 
 export default function Problem3() {
   return (
